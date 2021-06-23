@@ -21,6 +21,11 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/add")
     public String addFish() {
         fishService.addFish();
