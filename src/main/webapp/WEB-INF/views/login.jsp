@@ -25,7 +25,7 @@
 
                 </div>
                 <div class="form-group form-group--buttons">
-                    <a href="/register#register-form" class="btn btn-outline-secondary btn-sm text-uppercase ">Załóż
+                    <a href="/register" class="btn btn-outline-secondary btn-sm text-uppercase ">Załóż
                         konto</a>
                     <button class="btn btn-outline-secondary btn-sm text-uppercase " type="submit" value="Sign In">
                         Zaloguj się
@@ -33,7 +33,7 @@
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </div>
                 <div>
-                    <a href="password-reminder#password-form" class="btn btn-group-sm reset-password">Zapomniałem
+                    <a href="/password-reminder" class="btn btn-group-sm reset-password">Zapomniałem
                         hasła</a>
                 </div>
             </div>
