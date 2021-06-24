@@ -2,10 +2,7 @@ package helper.fisher.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -13,9 +10,15 @@ public class Fish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "fish_species_id")
+    private FishSpecies fishSpecies;
+    @ManyToOne
+    @JoinColumn(name = "catch_id")
+    private Catch Catch;
+    private double size;
+    private double weight;
 
-    public void setName(String name){
-        this.name = name;
-    }
+
+
 }

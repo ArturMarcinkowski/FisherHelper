@@ -112,7 +112,7 @@
     </div>
 </section>
 
-<!-- fish-base-->
+<!-- fishSpecies-base-->
 <section class="page-section" id="map">
     <div class="container">
         <div class="text-center">

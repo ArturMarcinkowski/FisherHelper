@@ -1,7 +1,7 @@
 package helper.fisher.controller;
 
 import helper.fisher.entity.User;
-import helper.fisher.service.FishService;
+import helper.fisher.service.FishSpeciesService;
 import helper.fisher.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +16,11 @@ import javax.validation.Valid;
 public class HomeController {
 
 
-    private final FishService fishService;
+    private final FishSpeciesService fishSpeciesService;
     private final UserService userService;
 
-    public HomeController(FishService fishService, UserService userService) {
-        this.fishService = fishService;
+    public HomeController(FishSpeciesService fishSpeciesService, UserService userService) {
+        this.fishSpeciesService = fishSpeciesService;
         this.userService = userService;
     }
 
@@ -51,7 +51,7 @@ public class HomeController {
 
     @GetMapping("/add")
     public String addFish() {
-        fishService.addFish();
+        fishSpeciesService.addFish();
         return "tu monke";
     }
 }
