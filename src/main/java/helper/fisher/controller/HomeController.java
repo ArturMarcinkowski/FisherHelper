@@ -41,12 +41,12 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String addUser(@Valid User user, BindingResult result, Model model) {
+    public String addUser(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "register";
         }
         userService.registerUser(user);
-        return "/login/password-send-confirm";
+        return "redirect:home";
     }
 
     @GetMapping("/add")
