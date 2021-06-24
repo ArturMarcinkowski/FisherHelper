@@ -9,20 +9,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class FishSpeciesServiceImpl implements FishSpeciesService {
 
-    private final FishSpeciesRepository fishSpeciesRepository;
+    private final FishSpeciesRepository speciesRepo;
 
 
 
     @Autowired
-    public FishSpeciesServiceImpl(FishSpeciesRepository fishSpeciesRepository) {
-        this.fishSpeciesRepository = fishSpeciesRepository;
+    public FishSpeciesServiceImpl(FishSpeciesRepository speciesRepo) {
+        this.speciesRepo = speciesRepo;
     }
 
     @Override
     public void addFish(){
         FishSpecies fishSpecies = new FishSpecies();
         fishSpecies.setName("Stefan");
-        fishSpeciesRepository.save(fishSpecies);
+        speciesRepo.save(fishSpecies);
+    }
+
+    @Override
+    public FishSpecies save(FishSpecies species){
+        speciesRepo.save(species);
+        return species;
     }
 
 
