@@ -15,14 +15,11 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Dodaj gatunek</h2>
             </div>
-            <form:form method="post" modelAttribute="species">
+            <form th:action="@{/species/add-photo}" th:object="${species}" method="post" enctype="multipart/form-data">
 
                 <div>
-                    <form:hidden path="id"/>
-                    <form:input path="name" placeholder="Nazwa gatunku"/>
-                </div>
-                <div>
-                    <form:errors path="name"/>
+                    <label>Photos: </label>
+                    <input type="file" name="image" accept="image/png, image/jpeg" />
                 </div>
 
                 <div class="form-group form-group--buttons">
@@ -30,7 +27,7 @@
                         Dodaj gatunek
                     </button>
                 </div>
-            </form:form>
+            </form>
         </div>
 
     </div>
