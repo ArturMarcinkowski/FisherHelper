@@ -31,5 +31,10 @@ public class FishSpeciesServiceImpl implements FishSpeciesService {
         return species;
     }
 
+    @Override
+    public FishSpecies findById(int id){
+        return speciesRepo.findById(id);
+    }
+
 
 }

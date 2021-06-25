@@ -5,4 +5,5 @@ import helper.fisher.entity.FishSpecies;
 public interface FishSpeciesService {
     void addFish();
     FishSpecies save(FishSpecies species);
+    FishSpecies findById(int id);
 }

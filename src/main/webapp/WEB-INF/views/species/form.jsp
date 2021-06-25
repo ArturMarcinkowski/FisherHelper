@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 
 
 <section class="page-section" id="login-form">
@@ -15,19 +15,22 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Dodaj gatunek</h2>
             </div>
-            <form th:action="@{/species/add-photo}" th:object="${species}" method="post" enctype="multipart/form-data">
-
+            <form th:action="@{/species/add}" th:object="${species}" method="post" enctype="multipart/form-data">
+                <div>
+                    <input type="text" name="name" placeholder="Nazwa"/>
+                </div>
                 <div>
                     <label>Photos: </label>
                     <input type="file" name="image" accept="image/png, image/jpeg" />
                 </div>
-
                 <div class="form-group form-group--buttons">
                     <button class="btn btn-outline-secondary btn-sm text-uppercase " type="submit" value="Sumbit">
                         Dodaj gatunek
                     </button>
                 </div>
             </form>
+
+
         </div>
 
     </div>
@@ -35,4 +38,4 @@
 <!-- About-->
 
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>

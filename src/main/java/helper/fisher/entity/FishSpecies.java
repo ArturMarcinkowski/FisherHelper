@@ -20,8 +20,12 @@ public class FishSpecies {
     public String getPhotosImagePath() {
         if (photos == null) return null;
 //        if (photos == null || id == null) return null;
-
-        return "/user-photos/" + id + "/" + photos;
+        return "/src/main/webapp/resources/photos/" + id + "/" + photos;
+    }
+    @Transient
+    public String getPhotosImagePathForHTML() {
+        if (photos == null) return null;
+        return "..\\..\\..\\resources\\photos\\" + id + "\\" + photos;
     }
 
 }
