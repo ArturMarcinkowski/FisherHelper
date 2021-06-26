@@ -49,9 +49,4 @@ public class HomeController {
         return "redirect:home";
     }
 
-    @GetMapping("/add")
-    public String addFish() {
-        fishSpeciesService.addFish();
-        return "tu monke";
-    }
 }

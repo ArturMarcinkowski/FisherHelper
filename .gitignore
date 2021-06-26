@@ -38,3 +38,4 @@ build/
 /mvnw.cmd
 
 /src/main/webapp/resources/photos/
+/src/main/resources/photos/

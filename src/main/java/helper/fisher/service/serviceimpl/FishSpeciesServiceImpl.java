@@ -51,7 +51,7 @@ public class FishSpeciesServiceImpl implements FishSpeciesService {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         species.setPhotos(fileName);
         FishSpecies savedSpecies = save(species);
-        String uploadDir = "src/main/webapp/resources/photos/species/" + savedSpecies.getId();
+        String uploadDir = "src/main/resources/static/photos/species/" + savedSpecies.getId();
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     }
 
