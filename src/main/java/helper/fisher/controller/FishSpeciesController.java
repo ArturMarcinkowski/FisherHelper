@@ -2,11 +2,9 @@ package helper.fisher.controller;
 
 import helper.fisher.entity.FishSpecies;
 import helper.fisher.service.FishSpeciesService;
-import helper.fisher.utils.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
@@ -40,19 +38,16 @@ public class FishSpeciesController {
     }
 
     @PostMapping("/edit/{id}")
-    public RedirectView saveEdit(@RequestParam("image") MultipartFile multipartFile, FishSpecies species) throws IOException {
+    public String saveEdit(@RequestParam("image") MultipartFile multipartFile, FishSpecies species) throws IOException {
         speciesService.savePicture(multipartFile, species);
-        return new RedirectView("/home", true);
+        return "redirect:/home";
     }
-
 
     @GetMapping("/delete/{id}")
     public String institutionDelete(@PathVariable int id) {
         speciesService.delete(id);
         return "redirect:/home";
     }
-
-
 
     @GetMapping("/show/{id}")
     public String show(@PathVariable int id, Model model){
