@@ -6,11 +6,9 @@
     <div class="container">
 
 
-        <div class="row text-center">
-<%--            <img src="${species.photosImagePathForHTML}" alt="Italian Trulli">--%>
-            <img src="${species.photosImagePathForHTML}" >
+        ${species.name}<br>
+            <img src="${species.photosImagePathForHTML}" height="200px" width="200px" alt="${species.name}" >
 
-        </div>
 
     </div>
 </section>

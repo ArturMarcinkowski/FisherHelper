@@ -16,19 +16,19 @@ public class ResizeImage {
     private static final int IMG_WIDTH = 200;
     private static final int IMG_HEIGHT = 200;
 
-    public static void main(String[] args) throws IOException {
+    public static void resize(String path) throws IOException {
 
-        Path source = Paths.get("C:\\test\\google.png");
-        Path target = Paths.get("C:\\test\\resize.png");
+        Path source = Paths.get(path);
+        Path target = Paths.get(path.substring(0,path.length() - 3) + "png");
 
         try (InputStream is = new FileInputStream(source.toFile())) {
-            resize(is, target, IMG_WIDTH, IMG_HEIGHT);
+            changeSize(is, target, IMG_WIDTH, IMG_HEIGHT);
         }
 
     }
 
-    private static void resize(InputStream input, Path target,
-                               int width, int height) throws IOException {
+    private static void changeSize(InputStream input, Path target,
+                                   int width, int height) throws IOException {
 
         // read an image to BufferedImage for processing
         BufferedImage originalImage = ImageIO.read(input);

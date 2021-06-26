@@ -37,5 +37,5 @@ build/
 /mvnw
 /mvnw.cmd
 
-/src/main/webapp/resources/photos/
-/src/main/resources/photos/
+/src/main/webapp/photos/
+/src/main/resources/static/photos/

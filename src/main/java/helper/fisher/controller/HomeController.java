@@ -49,4 +49,12 @@ public class HomeController {
         return "redirect:home";
     }
 
+//    @GetMapping("/du")
+//    public String du() throws IOException {
+//        ResizeImage.resize("src/main/resources/static/photos/species/18");
+//        String[] args = {};
+//        ResizeImage1.main(args);
+//        return "fds";
+//    }
+
 }

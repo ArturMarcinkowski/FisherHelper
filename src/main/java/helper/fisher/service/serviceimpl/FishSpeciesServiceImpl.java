@@ -4,6 +4,7 @@ import helper.fisher.entity.FishSpecies;
 import helper.fisher.repository.FishSpeciesRepository;
 import helper.fisher.service.FishSpeciesService;
 import helper.fisher.utils.FileUploadUtil;
+import helper.fisher.utils.ResizeImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -49,10 +50,12 @@ public class FishSpeciesServiceImpl implements FishSpeciesService {
 
     public void savePicture(MultipartFile multipartFile, FishSpecies species) throws IOException{
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        species.setPhotos(fileName);
+        String fileNamePng = fileName.substring(0, fileName.length() - 3) + "png";
+        species.setPhotos(fileNamePng);
         FishSpecies savedSpecies = save(species);
-        String uploadDir = "src/main/resources/static/photos/species/" + savedSpecies.getId();
+        String uploadDir = "src/main/webapp/photos/species/" + savedSpecies.getId();
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        ResizeImage.resize(uploadDir + "/" + fileName);
     }
 
 
