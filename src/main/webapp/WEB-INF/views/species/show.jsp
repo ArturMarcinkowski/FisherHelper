@@ -7,7 +7,8 @@
 
 
         <div class="row text-center">
-            <img src="${species.photosImagePathForHTML}" alt="Italian Trulli">
+<%--            <img src="${species.photosImagePathForHTML}" alt="Italian Trulli">--%>
+            <img src="${species.photosImagePathForHTML}" >
         </div>
 
     </div>

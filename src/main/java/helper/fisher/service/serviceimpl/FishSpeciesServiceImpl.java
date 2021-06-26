@@ -3,8 +3,14 @@ package helper.fisher.service.serviceimpl;
 import helper.fisher.entity.FishSpecies;
 import helper.fisher.repository.FishSpeciesRepository;
 import helper.fisher.service.FishSpeciesService;
+import helper.fisher.utils.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.io.IOException;
 
 @Service
 public class FishSpeciesServiceImpl implements FishSpeciesService {
@@ -34,6 +40,19 @@ public class FishSpeciesServiceImpl implements FishSpeciesService {
     @Override
     public FishSpecies findById(int id){
         return speciesRepo.findById(id);
+    }
+
+    @Override
+    public void delete(int id){
+        speciesRepo.delete(findById(id));
+    }
+
+    public void savePicture(MultipartFile multipartFile, FishSpecies species) throws IOException{
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        species.setPhotos(fileName);
+        FishSpecies savedSpecies = save(species);
+        String uploadDir = "src/main/webapp/resources/photos/species/" + savedSpecies.getId();
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     }
 
 

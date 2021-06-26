@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -26,22 +23,39 @@ public class FishSpeciesController {
     private FishSpeciesService speciesService;
 
     @GetMapping("/add")
-    public String addPhoto() {
+    public String add() {
         return "species/form";
     }
 
     @PostMapping("/add")
-    public RedirectView savePhoto(@RequestParam("image") MultipartFile multipartFile, FishSpecies species) throws IOException {
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        species.setPhotos(fileName);
-        FishSpecies savedSpecies = speciesService.save(species);
-        String uploadDir = "src/main/webapp/resources/photos/" + savedSpecies.getId();
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+    public RedirectView save(@RequestParam("image") MultipartFile multipartFile, FishSpecies species) throws IOException {
+        speciesService.savePicture(multipartFile, species);
         return new RedirectView("/home", true);
     }
 
-    @GetMapping("/show")
-    public String show(@RequestParam int id, Model model){
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable int id, Model model) {
+        model.addAttribute("species", speciesService.findById(id));
+        return "species/form";
+    }
+
+    @PostMapping("/edit/{id}")
+    public RedirectView saveEdit(@RequestParam("image") MultipartFile multipartFile, FishSpecies species) throws IOException {
+        speciesService.savePicture(multipartFile, species);
+        return new RedirectView("/home", true);
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String institutionDelete(@PathVariable int id) {
+        speciesService.delete(id);
+        return "redirect:/home";
+    }
+
+
+
+    @GetMapping("/show/{id}")
+    public String show(@PathVariable int id, Model model){
         FishSpecies species = speciesService.findById(id);
         model.addAttribute("species", species);
         return "species/show";

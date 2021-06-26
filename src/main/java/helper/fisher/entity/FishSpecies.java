@@ -25,7 +25,7 @@ public class FishSpecies {
     @Transient
     public String getPhotosImagePathForHTML() {
         if (photos == null) return null;
-        return "..\\..\\..\\resources\\photos\\" + id + "\\" + photos;
+        return "..\\..\\..\\resources\\photos\\species\\" + id + "\\" + photos;
     }
 
 }

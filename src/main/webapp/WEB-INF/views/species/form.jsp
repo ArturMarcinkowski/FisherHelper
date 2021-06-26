@@ -17,7 +17,7 @@
             </div>
             <form th:action="@{/species/add}" th:object="${species}" method="post" enctype="multipart/form-data">
                 <div>
-                    <input type="text" name="name" placeholder="Nazwa"/>
+                    <input type="text" name="name" placeholder="Nazwa" value="${species.name}"/>
                 </div>
                 <div>
                     <label>Photos: </label>
