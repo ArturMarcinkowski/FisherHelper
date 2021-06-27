@@ -26,5 +26,10 @@ public class FishServiceImpl implements FishService {
         fishRepository.save(fish);
     }
 
+    @Override
+    public Fish save(Fish fish){
+        return fishRepository.save(fish);
+    }
+
 
 }

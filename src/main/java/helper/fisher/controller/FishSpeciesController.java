@@ -10,15 +10,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
-
+import java.util.List;
 
 
 @Controller
 @RequestMapping("/species")
 public class FishSpeciesController {
 
-    @Autowired
     private FishSpeciesService speciesService;
+
+    public FishSpeciesController(FishSpeciesService speciesService) {
+        this.speciesService = speciesService;
+    }
 
     @GetMapping("/add")
     public String add() {
@@ -54,6 +57,13 @@ public class FishSpeciesController {
         FishSpecies species = speciesService.findById(id);
         model.addAttribute("species", species);
         return "species/show";
+    }
+
+    @GetMapping("/list")
+    public String list(Model model){
+        List<FishSpecies> speciesList = speciesService.findAll();
+        model.addAttribute("speciesList", speciesList);
+        return "species/list";
     }
 
 

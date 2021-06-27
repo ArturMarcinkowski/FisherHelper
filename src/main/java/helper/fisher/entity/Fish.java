@@ -15,7 +15,7 @@ public class Fish {
     private FishSpecies fishSpecies;
     @ManyToOne
     @JoinColumn(name = "catch_id")
-    private Catch Catch;
+    private Capture Capture;
     private double size;
     private double weight;
 

@@ -4,6 +4,7 @@ import helper.fisher.entity.FishSpecies;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface FishSpeciesService {
     void addFish();
@@ -11,4 +12,5 @@ public interface FishSpeciesService {
     FishSpecies findById(int id);
     void delete(int id);
     void savePicture(MultipartFile multipartFile, FishSpecies species) throws IOException;
+    List<FishSpecies> findAll();
 }

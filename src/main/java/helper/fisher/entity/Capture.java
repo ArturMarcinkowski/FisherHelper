@@ -8,14 +8,15 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-public class Catch {
+public class Capture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate catchDate;
+    private LocalDate date;
     private int hours;
     private boolean visibility;
+    private int fishAmount;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

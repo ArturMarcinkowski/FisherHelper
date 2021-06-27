@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class FishSpeciesServiceImpl implements FishSpeciesService {
@@ -48,6 +49,7 @@ public class FishSpeciesServiceImpl implements FishSpeciesService {
         speciesRepo.delete(findById(id));
     }
 
+    @Override
     public void savePicture(MultipartFile multipartFile, FishSpecies species) throws IOException{
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         String fileNamePng = fileName.substring(0, fileName.length() - 3) + "png";
@@ -57,6 +59,13 @@ public class FishSpeciesServiceImpl implements FishSpeciesService {
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         ResizeImage.resize(uploadDir + "/" + fileName);
     }
+
+    @Override
+    public List<FishSpecies> findAll(){
+        return speciesRepo.findAll();
+    }
+
+
 
 
 }
