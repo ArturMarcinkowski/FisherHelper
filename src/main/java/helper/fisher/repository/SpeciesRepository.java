@@ -1,13 +1,13 @@
 package helper.fisher.repository;
 
-import helper.fisher.entity.FishSpecies;
+import helper.fisher.entity.Species;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface FishSpeciesRepository extends JpaRepository<FishSpecies, Integer> {
+public interface SpeciesRepository extends JpaRepository<Species, Integer> {
 
-    FishSpecies findById(int id);
+    Species findById(int id);
 
 }

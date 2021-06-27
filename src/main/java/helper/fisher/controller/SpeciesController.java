@@ -1,8 +1,7 @@
 package helper.fisher.controller;
 
-import helper.fisher.entity.FishSpecies;
-import helper.fisher.service.FishSpeciesService;
-import org.springframework.beans.factory.annotation.Autowired;
+import helper.fisher.entity.Species;
+import helper.fisher.service.SpeciesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +14,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/species")
-public class FishSpeciesController {
+public class SpeciesController {
 
-    private FishSpeciesService speciesService;
+    private SpeciesService speciesService;
 
-    public FishSpeciesController(FishSpeciesService speciesService) {
+    public SpeciesController(SpeciesService speciesService) {
         this.speciesService = speciesService;
     }
 
@@ -29,7 +28,7 @@ public class FishSpeciesController {
     }
 
     @PostMapping("/add")
-    public RedirectView save(@RequestParam("image") MultipartFile multipartFile, FishSpecies species) throws IOException {
+    public RedirectView save(@RequestParam("image") MultipartFile multipartFile, Species species) throws IOException {
         speciesService.savePicture(multipartFile, species);
         return new RedirectView("/home", true);
     }
@@ -41,7 +40,7 @@ public class FishSpeciesController {
     }
 
     @PostMapping("/edit/{id}")
-    public String saveEdit(@RequestParam("image") MultipartFile multipartFile, FishSpecies species) throws IOException {
+    public String saveEdit(@RequestParam("image") MultipartFile multipartFile, Species species) throws IOException {
         speciesService.savePicture(multipartFile, species);
         return "redirect:/home";
     }
@@ -54,14 +53,14 @@ public class FishSpeciesController {
 
     @GetMapping("/show/{id}")
     public String show(@PathVariable int id, Model model){
-        FishSpecies species = speciesService.findById(id);
+        Species species = speciesService.findById(id);
         model.addAttribute("species", species);
         return "species/show";
     }
 
     @GetMapping("/list")
     public String list(Model model){
-        List<FishSpecies> speciesList = speciesService.findAll();
+        List<Species> speciesList = speciesService.findAll();
         model.addAttribute("speciesList", speciesList);
         return "species/list";
     }

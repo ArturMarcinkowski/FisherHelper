@@ -12,6 +12,7 @@ public class Capture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String name;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private int hours;

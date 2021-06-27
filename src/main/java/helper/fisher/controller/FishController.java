@@ -2,7 +2,7 @@ package helper.fisher.controller;
 
 import helper.fisher.entity.Fish;
 import helper.fisher.service.FishService;
-import helper.fisher.service.FishSpeciesService;
+import helper.fisher.service.SpeciesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +15,10 @@ import javax.validation.Valid;
 @RequestMapping("/fish")
 public class FishController {
 
-    private FishSpeciesService speciesService;
+    private SpeciesService speciesService;
     private FishService fishService;
 
-    public FishController(FishSpeciesService speciesService, FishService fishService) {
+    public FishController(SpeciesService speciesService, FishService fishService) {
         this.speciesService = speciesService;
         this.fishService = fishService;
     }

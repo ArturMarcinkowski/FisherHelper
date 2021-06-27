@@ -12,7 +12,7 @@
 	<artifactId>fisher</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>FisherHelper</name>
-	<description>Application for collecting data about fishSpecies number in lakes and rivers</description>
+	<description>Application for collecting data about species number in lakes and rivers</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

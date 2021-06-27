@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class FishSpecies {
+public class Species {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -14,12 +14,9 @@ public class FishSpecies {
 
     @Column(nullable = true, length = 64)
     private String photos;
-
-
     @Transient
     public String getPhotosImagePath() {
         if (photos == null) return null;
-//        if (photos == null || id == null) return null;
         return "/src/main/resources/static/photos/species/" + id + "/" + photos;
     }
     @Transient

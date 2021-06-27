@@ -1,7 +1,7 @@
 package helper.fisher.controller;
 
 import helper.fisher.entity.User;
-import helper.fisher.service.FishSpeciesService;
+import helper.fisher.service.SpeciesService;
 import helper.fisher.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +16,11 @@ import javax.validation.Valid;
 public class HomeController {
 
 
-    private final FishSpeciesService fishSpeciesService;
+    private final SpeciesService speciesService;
     private final UserService userService;
 
-    public HomeController(FishSpeciesService fishSpeciesService, UserService userService) {
-        this.fishSpeciesService = fishSpeciesService;
+    public HomeController(SpeciesService speciesService, UserService userService) {
+        this.speciesService = speciesService;
         this.userService = userService;
     }
 
